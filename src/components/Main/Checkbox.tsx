@@ -8,7 +8,7 @@ type PropsType = {
 const Checkbox = ({guestRestrictions, setGuestRestrictions}: PropsType) => {
     
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-        setGuestRestrictions({...guestRestrictions, [e.target.name]: e.target.checked})
+        setGuestRestrictions({...guestRestrictions, [e.target.id]: e.target.checked})
     }
 
   return (
@@ -20,7 +20,6 @@ const Checkbox = ({guestRestrictions, setGuestRestrictions}: PropsType) => {
                     <label htmlFor={checkbox.id}>{checkbox.label}</label>
                     <input 
                         type="checkbox" 
-                        name={checkbox.id}
                         id={checkbox.id}
                         onChange={handleChange}
                     />
