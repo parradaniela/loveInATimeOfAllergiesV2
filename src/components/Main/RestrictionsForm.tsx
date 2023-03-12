@@ -1,22 +1,25 @@
-import { ChangeEvent, FormEvent, SyntheticEvent, useState } from "react"
+import { ChangeEvent, FormEvent, useState } from "react"
 import Checkbox from "./Checkbox";
-
-// type FormDataType = {
-//     name: string,
-//     restrictions: {}
-// }
 
 const RestrictionsForm = () => {
     const [formState, setFormState] = useState({})
     const [guestRestrictions, setGuestRestrictions] = useState({});
     const [nameInput, setNameInput] = useState('');
 
+    const removeFalse = (stateObj: {}) => {
+        for (const key in stateObj) {
+            if (stateObj[key as keyof {}] === false) {
+                delete stateObj[key as keyof {}]
+            }
+        }
+        return stateObj
+    }
+
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        
         setFormState({
             name: nameInput,
-            restrictions: guestRestrictions
+            restrictions: removeFalse(guestRestrictions)
         });
         const target = e.target as Element;
         const checkboxNodeList = target.children[1].childNodes;
