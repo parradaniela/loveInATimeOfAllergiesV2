@@ -1,108 +1,134 @@
 type CheckboxType = {
     label: string,
-    id: string
+    id: string,
+    initialState: boolean
 }
 
 export const checkboxes: CheckboxType[] = [
     {
         label: "Alcohol-Free",
-        id: "alcoholFree"
+        id: "alcoholFree",
+        initialState: false
     },
     {
         label: "Celery-Free",
-        id: "celeryFree"
+        id: "celeryFree",
+        initialState: false
     },
     {
         label: "Crustacean-Free",
-        id: "crustaceanFree"
+        id: "crustaceanFree",
+        initialState: false
     },
     {
         label: "Dairy-Free",
-        id: "dairyFree"
+        id: "dairyFree",
+        initialState: false
     },
     {
         label: "Egg-Free",
-        id: "eggFree"
+        id: "eggFree",
+        initialState: false
     },
     {
         label: "Fish-Free",
-        id: "fishFree"
+        id: "fishFree",
+        initialState: false
     },
     {
         label: "FODMAP-Free",
-        id: "fodmapFree"
+        id: "fodmapFree",
+        initialState: false
     },
     {
         label: "Gluten-Free",
-        id: "glutenFree"
+        id: "glutenFree",
+        initialState: false
     },
     {
         label: "Kidney-Friendly",
-        id: "kidneyFriendly"
+        id: "kidneyFriendly",
+        initialState: false
     },
     {
         label: "Kosher",
-        id: "kosher"
+        id: "kosher",
+        initialState: false
     },
     {
         label: "Lupine-free",
-        id: "lupineFree"
+        id: "lupineFree",
+        initialState: false
     },
     {
         label: "Mollusk-Free",
-        id: "molluskFree"
+        id: "molluskFree",
+        initialState: false
     },
     {
         label: "Mustard-Free",
-        id: "mustardFree"
+        id: "mustardFree",
+        initialState: false
     },
     {
         label: "Peanut-Free",
-        id: "peanutFree"
+        id: "peanutFree",
+        initialState: false
     },
     {
         label: "Pescatarian",
-        id: "pescatarian"
+        id: "pescatarian",
+        initialState: false
     },
     {
         label: "Pork-Free",
-        id: "porkFree"
+        id: "porkFree",
+        initialState: false
     },
     {
         label: "Read Meat-Free",
-        id: "readMeatFree"
+        id: "readMeatFree",
+        initialState: false
     },
     {
         label: "Sesame-Free",
-        id: "sesameFree"
+        id: "sesameFree",
+        initialState: false
     },
     {
         label: "Shellfish-Free",
-        id: "shellfishFree"
+        id: "shellfishFree",
+        initialState: false
     },
     {
         label: "Soy-Free",
-        id: "soyFree"
+        id: "soyFree",
+        initialState: false
     },
     {
         label: "Sulfite-Free",
-        id: "sulfiteFree"
+        id: "sulfiteFree",
+        initialState: false
     },
     {
         label: "Tree Nut-Free",
-        id: "treeNutFree"
+        id: "treeNutFree",
+        initialState: false
     },
     {
         label: "Vegan",
-        id: "vegan"
+        id: "vegan",
+        initialState: false
     },
     {
         label: "Vegetarian",
-        id: "vegetarian"
+        id: "vegetarian",
+        initialState: false
     },
     {
         label: "Wheat-Free",
-        id: "wheatFree"
+        id: "wheatFree",
+        initialState: false
     }
 
 ]
