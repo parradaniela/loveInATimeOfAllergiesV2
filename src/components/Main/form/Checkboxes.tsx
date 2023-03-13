@@ -1,11 +1,12 @@
 import { ChangeEvent } from "react";
-import { checkboxes } from "../../data/checkboxes";
+import { checkboxes } from "../../../data/checkboxes";
+import { GuestRestrictionType } from "../form/Form";
 
 type PropsType = {
-    guestRestrictions: {},
-    setGuestRestrictions: React.Dispatch<React.SetStateAction<{}>>
+    guestRestrictions: GuestRestrictionType,
+    setGuestRestrictions: React.Dispatch<React.SetStateAction<GuestRestrictionType>>
 }
-const Checkbox = ({guestRestrictions, setGuestRestrictions}: PropsType) => {
+const Checkboxes = ({guestRestrictions, setGuestRestrictions}: PropsType) => {
     
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         setGuestRestrictions({...guestRestrictions, [e.target.id]: e.target.checked})
@@ -31,4 +32,4 @@ const Checkbox = ({guestRestrictions, setGuestRestrictions}: PropsType) => {
   )
 }
 
-export default Checkbox
+export default Checkboxes

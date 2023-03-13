@@ -1,10 +1,10 @@
-import CreatePartyForm from "./CreatePartyForm"
 import BgWaveTwo from "../../assets/BgWaveTwo"
+import Form from "./form/Form";
 
 const Main = () => {
   return (
     <main>
-          <CreatePartyForm />
+          <Form />
           {/* <BgWaveTwo /> */}
 
     </main>
