@@ -4,12 +4,6 @@ import Checkboxes from "./Checkboxes";
 import { getDatabase, push, ref } from "firebase/database";
 import firebase from "../../../firebase/firebase";
 
-type FormStateType = {
-  party: string,
-  guestName: string,
-  restrictions: string[]
-}
-
 export type GuestRestrictionType = {[key: string]: boolean}
 
 const Form = () => {
