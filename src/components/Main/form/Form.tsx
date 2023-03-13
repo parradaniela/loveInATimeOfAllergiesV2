@@ -1,6 +1,8 @@
 import { FormEvent, useState } from "react";
 import TextInput from "./TextInput";
 import Checkboxes from "./Checkboxes";
+import { getDatabase, push, ref } from "firebase/database";
+import firebase from "../../../firebase/firebase";
 
 type FormStateType = {
   party: string,
@@ -13,16 +15,16 @@ export type GuestRestrictionType = {[key: string]: boolean}
 const Form = () => {
   const [partyName, setPartyName] = useState<string>('');
   const [guestName, setGuestName] = useState<string>('');
-  const [formState, setFormState] = useState<FormStateType>({party: '', guestName: '', restrictions: []});
   const [guestRestrictions, setGuestRestrictions] = useState<GuestRestrictionType>({});
+  const database = getDatabase(firebase)
   
   const resetForm = (): void => {
     setGuestRestrictions({});
     setGuestName('')
   }
 
-  //Handling the logic to remove any false properties (ie, checkboxes that were checked, then unchecked) here, rather than in Checkbox component, so that it only has to check for the false values once (on submit) instead of multiple times (on change) in case the user decides to check and uncheck the same box multiple times
   const removeFalse = (stateObj: GuestRestrictionType) => {
+    //Handling the logic to remove any false properties (ie, checkboxes that were checked, then unchecked) here, rather than in Checkbox component, so that it only has to check for the false values once (on submit) instead of multiple times (on change) in case the user decides to check and uncheck the same box multiple times
     for (const key in stateObj) {
         if (stateObj[key as keyof GuestRestrictionType] === false) {
             delete stateObj[key as keyof GuestRestrictionType]
@@ -45,11 +47,13 @@ const Form = () => {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    setFormState({
-        party: partyName,
-        guestName: guestName,
-        restrictions: Object.keys(removeFalse(guestRestrictions))
-    });
+    const childNodeRef = ref(database, `/${partyName}`)
+    const newGuest = {
+      party: partyName,
+      guestName: guestName,
+      restrictions: Object.keys(removeFalse(guestRestrictions))
+    }
+    push(childNodeRef, newGuest);
     clearCheckboxes(e);
     resetForm()
   }
