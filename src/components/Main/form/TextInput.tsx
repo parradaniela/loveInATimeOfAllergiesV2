@@ -12,16 +12,16 @@ const TextInput = ({id, label, inputState, setInputFunc, placeholder}: PropsType
 
   return (
     <>
-    <label htmlFor={id}>{label}</label>
-    <input
-        type="text"
-        id={id}
-        value={inputState}
-        onChange={(e: ChangeEvent<HTMLInputElement>): void => setInputFunc((e.target.value).toLowerCase())}
-        placeholder={placeholder}
-        required
-    />
-  </>
+      <label htmlFor={id}>{label}</label>
+      <input
+          type="text"
+          id={id}
+          value={inputState}
+          onChange={(e: ChangeEvent<HTMLInputElement>): void => setInputFunc((e.target.value).toLowerCase())}
+          placeholder={placeholder}
+          required
+      />
+    </>
   )
 }
 

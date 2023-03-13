@@ -19,9 +19,9 @@ const Form = () => {
   const resetForm = (): void => {
     setGuestRestrictions({});
     setGuestName('')
-}
+  }
 
-//Handling the logic to remove any false properties (ie, checkboxes that were checked, then unchecked) here, rather than in Checkbox component, so that it only has to check for the false values once (on submit) instead of multiple times (on change) in case the user decides to check and uncheck the same box multiple times
+  //Handling the logic to remove any false properties (ie, checkboxes that were checked, then unchecked) here, rather than in Checkbox component, so that it only has to check for the false values once (on submit) instead of multiple times (on change) in case the user decides to check and uncheck the same box multiple times
   const removeFalse = (stateObj: GuestRestrictionType) => {
     for (const key in stateObj) {
         if (stateObj[key as keyof GuestRestrictionType] === false) {
@@ -36,7 +36,6 @@ const Form = () => {
     //Navigating through properties on the node list to find the checked property on each checkbox and flip it back to false
     const checkboxNodeList = target.childNodes[1].childNodes[5].childNodes;
     checkboxNodeList.forEach(checkboxNode => {     
-      
         const checkboxInputs = checkboxNode.childNodes[1] as HTMLInputElement;
         if (checkboxInputs.checked) {
             checkboxInputs.checked = false
@@ -53,7 +52,7 @@ const Form = () => {
     });
     clearCheckboxes(e);
     resetForm()
-}
+  }
 
   return (
     <section className="forms">

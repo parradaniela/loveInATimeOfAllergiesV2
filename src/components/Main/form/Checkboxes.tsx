@@ -6,6 +6,7 @@ type PropsType = {
     guestRestrictions: GuestRestrictionType,
     setGuestRestrictions: React.Dispatch<React.SetStateAction<GuestRestrictionType>>
 }
+
 const Checkboxes = ({guestRestrictions, setGuestRestrictions}: PropsType) => {
     
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
