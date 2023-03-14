@@ -6,7 +6,8 @@ A refactored version of an old group project from my time at Juno College of Tec
 
 ## Live Site URL
 
-This site is not deployed yet - check back for updates! 😊
+While this site is still under construction, I have deployed it already in case you'd like to see the work as it progresses 😊
+Link: https://liatoa.netlify.app
 
 ## Designed with
 
