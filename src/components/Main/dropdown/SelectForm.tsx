@@ -1,14 +1,7 @@
-import { DataSnapshot } from "firebase/database"
-import { useState } from "react";
 import Dropdown from "./Dropdown";
+import Preview from "./Preview";
 
-type PropsType = {
-    allPartyData: {}
-}
-
-const SelectForm = ({allPartyData}: PropsType) => {
-    const partyNames = Object.keys(allPartyData)
-    const [userChoice, setUserChoice] = useState('')
+const SelectForm = () => {
     
     return (
         <section className="partyPreview">
@@ -17,11 +10,8 @@ const SelectForm = ({allPartyData}: PropsType) => {
                 <form action="submit" className="dropdownForm">
                     <fieldset>
                         <legend>Select the party for which you wish to see recipe suggestions!</legend>
-                        <Dropdown 
-                            partyNames={partyNames}
-                            userChoice={userChoice}
-                            setUserChoice={setUserChoice}
-                        />
+                        <Dropdown />
+                        <Preview />
                     </fieldset>
                 </form>
             </div>
