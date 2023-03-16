@@ -4,11 +4,11 @@ type PropsType = {
     id: string,
     label: string
     inputState: string,
-    setInputFunc: React.Dispatch<React.SetStateAction<string>>,
+    setInputState: React.Dispatch<React.SetStateAction<string>>,
     placeholder: string
 }
 
-const TextInput = ({id, label, inputState, setInputFunc, placeholder}: PropsType) => {
+const TextInput = ({id, label, inputState, setInputState, placeholder}: PropsType) => {
 
   return (
     <>
@@ -17,7 +17,7 @@ const TextInput = ({id, label, inputState, setInputFunc, placeholder}: PropsType
           type="text"
           id={id}
           value={inputState}
-          onChange={(e: ChangeEvent<HTMLInputElement>): void => setInputFunc((e.target.value).toLowerCase())}
+          onChange={(e: ChangeEvent<HTMLInputElement>): void => setInputState((e.target.value).toLowerCase())}
           placeholder={placeholder}
           required
       />

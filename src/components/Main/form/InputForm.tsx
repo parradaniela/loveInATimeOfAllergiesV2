@@ -1,14 +1,21 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useContext, useState } from "react";
 import TextInput from "./TextInput";
 import Checkboxes from "./Checkboxes";
 import { getDatabase, push, ref } from "firebase/database";
 import firebase from "../../../firebase/firebase";
+import { DataContext } from "../../../context/DataContext";
 
 const InputForm = () => {
-  const [partyName, setPartyName] = useState<string>('');
-  const [guestName, setGuestName] = useState<string>('');
-  const [restrictions, setRestrictions] = useState<string[]>([]);
-  const database = getDatabase(firebase)
+  const {
+    partyName, 
+    setPartyName, 
+    guestName, 
+    setGuestName, 
+    restrictions, 
+    setRestrictions
+  } = useContext(DataContext)
+
+  
   
   const resetForm = (): void => {
     setRestrictions([]);
@@ -25,15 +32,16 @@ const InputForm = () => {
             checkboxInputs.checked = false
         }
     });
-}
+  }
 
   const onSubmit = (e: FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
+    const database = getDatabase(firebase)
     const childNodeRef = ref(database, `/${partyName}`)
     const newGuest = {
       party: partyName,
       guestName: guestName,
-      restrictions: Object.keys(restrictions)
+      restrictions: restrictions
     }
     push(childNodeRef, newGuest);
     clearCheckboxes(e);
@@ -58,21 +66,18 @@ const InputForm = () => {
               id="partyName"
               label="Party Name: "
               inputState={partyName}
-              setInputFunc={setPartyName}
+              setInputState={setPartyName}
               placeholder="Ex: Birthday Party"
             />
             <TextInput 
               id="guestName"
               label="Guest Name: "
               inputState={guestName}
-              setInputFunc={setGuestName}
+              setInputState={setGuestName}
               placeholder="Ex: John Smith"
             />
             <div className="checkboxes">
-              <Checkboxes 
-                restrictions={restrictions}
-                setRestrictions={setRestrictions}
-              />
+              <Checkboxes />
             </div>
             <div className="buttonContainer">
                 <button className="btn">Submit</button>
