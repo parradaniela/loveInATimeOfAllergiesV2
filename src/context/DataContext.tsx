@@ -2,11 +2,13 @@ import { DataSnapshot, getDatabase, onValue, ref } from "firebase/database";
 import { createContext, useState, Dispatch, ReactNode, useEffect } from "react";
 import firebase from "../firebase/firebase";
 
-export type DatabaseDataType = {
-      guestName: string,
-      party: string,
-      restrictions: string[]
-    }
+export type PartyPreviewDataType = {
+  [key: string]: {
+    guestName: string,
+    party: string,
+    restrictions?: string[]
+  }
+}
 
 type ChildrenType = { children?: ReactNode}
 
@@ -16,33 +18,14 @@ interface DataContextInterface {
   guestName: string,
   restrictions: string[],
   userChoice: string,
+  partyPreviewObj: PartyPreviewDataType,
   setFirebaseData: Dispatch<React.SetStateAction<DataSnapshot>>,
   setPartyName: Dispatch<React.SetStateAction<string>>,
   setGuestName: Dispatch<React.SetStateAction<string>>,
   setRestrictions: Dispatch<React.SetStateAction<string[]>>,
-  setUserChoice: Dispatch<React.SetStateAction<string>>
+  setUserChoice: Dispatch<React.SetStateAction<string>>,
+  setPartyPreviewObj: Dispatch<React.SetStateAction<PartyPreviewDataType>>
 }
-
-const initFbDataState: DatabaseDataType[] = [
-  {
-    guestName: '',
-    party: '',
-    restrictions: ['']
-  }
-]
-
-// const defaultState = {
-//   firebaseData: initFbDataState,
-//   partyName: '',
-//   guestName: '',
-//   restrictions: [],
-//   userChoice: '',
-//   setFirebaseData: (data: DatabaseDataType[]) => {},
-//   setPartyName: (party: string) => {},
-//   setGuestName: (guest: string) => {},
-//   setRestrictions: (restrictions: string[]) => {},
-//   setUserChoice: (choice: string) => {}
-// } as DataContextInterface
 
 export const DataContext = createContext<Partial<DataContextInterface>>({});
 
@@ -52,7 +35,8 @@ const DataProvider = ({children}: ChildrenType)=> {
     const [partyName, setPartyName] = useState('');
     const [guestName, setGuestName] = useState('');
     const [restrictions, setRestrictions] = useState<string[]>([]);
-    const [userChoice, setUserChoice] = useState('')
+    const [userChoice, setUserChoice] = useState('');
+    const [partyPreviewObj, setPartyPreviewObj] = useState({})
     
     useEffect(() => {
       const database = getDatabase(firebase)
@@ -69,12 +53,14 @@ const DataProvider = ({children}: ChildrenType)=> {
             partyName, 
             guestName, 
             restrictions, 
-            userChoice, 
+            userChoice,
+            partyPreviewObj, 
             setFirebaseData, 
             setPartyName, 
             setGuestName, 
             setRestrictions, 
-            setUserChoice 
+            setUserChoice,
+            setPartyPreviewObj 
             }}
         >
             {children}
