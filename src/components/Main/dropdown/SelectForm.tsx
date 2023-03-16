@@ -2,7 +2,7 @@ import Dropdown from "./Dropdown";
 import Preview from "./Preview";
 
 const SelectForm = () => {
-    
+
     return (
         <section className="partyPreview">
             <div className="dropdown wrapper">
