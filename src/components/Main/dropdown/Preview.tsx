@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react"
-import { DataContext } from "../../../context/DataContext"
+import { DataContext, FirebaseDataType } from "../../../context/DataContext"
 
 const Preview = () => {
 
@@ -8,12 +8,12 @@ const Preview = () => {
   useEffect(() => {
     for (let key in firebaseData) {
       if (key === userChoice) {
-        setPartyPreviewObj?.(firebaseData[key as keyof {}]);
+        setPartyPreviewObj(firebaseData[key as keyof FirebaseDataType]);
       }
     }
   }, [userChoice, firebaseData])
 
-  const parties = Object.values(partyPreviewObj!)
+  const parties = Object.values(partyPreviewObj)
 
   return (
     <div className="guestList">
