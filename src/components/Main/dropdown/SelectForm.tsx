@@ -1,5 +1,5 @@
 import Dropdown from "./Dropdown";
-import Preview from "./Preview";
+import PreviewList from "./preview/PreviewList";
 
 const SelectForm = () => {
 
@@ -11,7 +11,7 @@ const SelectForm = () => {
                     <fieldset>
                         <legend>Select the party for which you wish to see recipe suggestions!</legend>
                         <Dropdown />
-                        <Preview />
+                        <PreviewList />
                     </fieldset>
                 </form>
             </div>

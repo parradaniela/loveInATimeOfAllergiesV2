@@ -1,7 +1,8 @@
 import { useContext, useEffect } from "react"
-import { DataContext, FirebaseDataType } from "../../../context/DataContext"
+import { DataContext, FirebaseDataType } from "../../../../context/DataContext"
+import PreviewListItem from "./PreviewListItem"
 
-const Preview = () => {
+const PreviewList = () => {
 
   const { firebaseData, userChoice, partyPreviewObj, setPartyPreviewObj } = useContext(DataContext)
 
@@ -20,23 +21,20 @@ const Preview = () => {
       <div className="summaryContainer cssanimation">
         <h2>Step 3: Review Your Party</h2>
         <ul className="partySummary">
-          <li className="guestName">
-            <h3>Name</h3>
-          </li>
-          {
-            parties.map((party, index) => {
-              return (
-                <div key={index}>
-                  <p>{party.guestName}</p>
-                  <p>{party.restrictions}</p>
-                </div>
-              )
-            })
-          }
+          <PreviewListItem 
+            className="guestNames"
+            heading="Name"
+            property="guestName"
+          />
+          <PreviewListItem 
+            className="guestRestrictions"
+            heading="Dietary Restrictions"
+            property="restrictions"
+          />
         </ul>
       </div>
     </div>
   )
 }
 
-export default Preview
+export default PreviewList
