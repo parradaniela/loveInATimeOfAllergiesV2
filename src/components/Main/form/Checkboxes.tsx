@@ -1,11 +1,11 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, useContext } from "react";
+import { DataContext } from "../../../context/DataContext";
 import { checkboxes } from "../../../data/checkboxes";
 
-type PropsType = {
-    restrictions: string[],
-    setRestrictions: React.Dispatch<React.SetStateAction<string[]>>
-}
-const Checkboxes = ({ restrictions, setRestrictions }: PropsType) => {
+
+const Checkboxes = () => {
+
+    const {restrictions, setRestrictions} = useContext(DataContext);
 
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
         let copyOfRestrictions = [...restrictions]
