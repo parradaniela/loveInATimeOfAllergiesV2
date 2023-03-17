@@ -8,10 +8,10 @@ import { DataContext } from "../../../context/DataContext";
 const InputForm = () => {
   const {
     partyName, 
-    setPartyName, 
     guestName, 
-    setGuestName, 
     restrictions, 
+    setPartyName, 
+    setGuestName, 
     setRestrictions
   } = useContext(DataContext)
 
