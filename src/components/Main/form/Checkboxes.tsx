@@ -23,10 +23,10 @@ const Checkboxes = () => {
                 checkboxes.map((checkbox, i) => {
                     return (
                         <div key={i}>
-                            <label htmlFor={checkbox.id}>{checkbox.label}</label>
+                            <label htmlFor={checkbox}>{checkbox}</label>
                             <input
                                 type="checkbox"
-                                id={checkbox.id}
+                                id={checkbox.toLowerCase()}
                                 onChange={onChange}
                             />
                         </div>

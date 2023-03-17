@@ -1,9 +1,8 @@
 type PropsType = {
-    number: number
     listItemText: string | string[] | undefined
 }
 
-const PreviewListText = ({number, listItemText}: PropsType) => {
+const PreviewListText = ({ listItemText }: PropsType) => {
   return (
     <>
         {

@@ -8,16 +8,15 @@ export type BaseDataType = {
   restrictions?: string[]
 }
 
-type PartyPreviewDataType = { 
-  [key: string]: BaseDataType
-}
+type PartyPreviewDataType = BaseDataType[]
 
 export type FirebaseDataType = {
-  [key: string]: PartyPreviewDataType
+  [key: string]: {
+    [key: string]: BaseDataType
+  }
 }
 
-
-type ChildrenType = { children?: ReactNode}
+type ChildrenType = { children?: ReactNode }
 
 interface DataContextInterface {
   firebaseData: FirebaseDataType,
@@ -25,13 +24,13 @@ interface DataContextInterface {
   guestName: string,
   restrictions: string[],
   userChoice: string,
-  partyPreviewObj: PartyPreviewDataType,
+  partyPreview: PartyPreviewDataType,
   setFirebaseData: Dispatch<React.SetStateAction<FirebaseDataType>>,
   setPartyName: Dispatch<React.SetStateAction<string>>,
   setGuestName: Dispatch<React.SetStateAction<string>>,
   setRestrictions: Dispatch<React.SetStateAction<string[]>>,
   setUserChoice: Dispatch<React.SetStateAction<string>>,
-  setPartyPreviewObj: Dispatch<React.SetStateAction<PartyPreviewDataType>>
+  setPartyPreview: Dispatch<React.SetStateAction<PartyPreviewDataType>>
 }
 
 const initFbState = {
@@ -44,13 +43,13 @@ const initFbState = {
   }
 } as FirebaseDataType
 
-const initPartyPreviewObjState = {
-  '': {
+const initPartyPreviewState = [
+  {
     guestName: '',
     party: '',
     restrictions: []
   }
-} as PartyPreviewDataType
+] as PartyPreviewDataType
 
 const initContextState = {
   firebaseData: initFbState,
@@ -58,54 +57,54 @@ const initContextState = {
   guestName: '',
   restrictions: [],
   userChoice: '',
-  partyPreviewObj: initPartyPreviewObjState,
-  setFirebaseData: (value: FirebaseDataType) => {},
-  setPartyName: (name: string) => {},
-  setGuestName: (guest: string) => {},
-  setRestrictions: (restrictions: string[]) => {},
-  setUserChoice: (choice: string) => {},
-  setPartyPreviewObj: (obj: PartyPreviewDataType) => {}
+  partyPreview: initPartyPreviewState,
+  setFirebaseData: (value: FirebaseDataType) => { },
+  setPartyName: (name: string) => { },
+  setGuestName: (guest: string) => { },
+  setRestrictions: (restrictions: string[]) => { },
+  setUserChoice: (choice: string) => { },
+  setPartyPreview: (obj: PartyPreviewDataType) => { }
 } as DataContextInterface
 
 
 export const DataContext = createContext<DataContextInterface>(initContextState);
 
-const DataProvider = ({children}: ChildrenType)=> {
-    const [firebaseData, setFirebaseData] = useState<FirebaseDataType>(initFbState)
-    const [partyName, setPartyName] = useState('');
-    const [guestName, setGuestName] = useState('');
-    const [restrictions, setRestrictions] = useState<string[]>([]);
-    const [userChoice, setUserChoice] = useState('');
-    const [partyPreviewObj, setPartyPreviewObj] = useState(initPartyPreviewObjState)
-    
-    useEffect(() => {
-      const database = getDatabase(firebase)
-      const dbRef = ref(database)
-      onValue(dbRef, (response) => {
-        setFirebaseData(response.val())
-      });
-    }, [])
+const DataProvider = ({ children }: ChildrenType) => {
+  const [firebaseData, setFirebaseData] = useState<FirebaseDataType>(initFbState)
+  const [partyName, setPartyName] = useState('');
+  const [guestName, setGuestName] = useState('');
+  const [restrictions, setRestrictions] = useState<string[]>([]);
+  const [userChoice, setUserChoice] = useState('');
+  const [partyPreview, setPartyPreview] = useState(initPartyPreviewState)
 
-    return (
-        <DataContext.Provider 
-          value={{ 
-            firebaseData, 
-            partyName, 
-            guestName, 
-            restrictions, 
-            userChoice,
-            partyPreviewObj, 
-            setFirebaseData, 
-            setPartyName, 
-            setGuestName, 
-            setRestrictions, 
-            setUserChoice,
-            setPartyPreviewObj 
-            }}
-        >
-            {children}
-        </DataContext.Provider>
-    )
+  useEffect(() => {
+    const database = getDatabase(firebase)
+    const dbRef = ref(database)
+    onValue(dbRef, (response) => {
+      setFirebaseData(response.val())
+    });
+  }, [])
+
+  return (
+    <DataContext.Provider
+      value={{
+        firebaseData,
+        partyName,
+        guestName,
+        restrictions,
+        userChoice,
+        partyPreview,
+        setFirebaseData,
+        setPartyName,
+        setGuestName,
+        setRestrictions,
+        setUserChoice,
+        setPartyPreview
+      }}
+    >
+      {children}
+    </DataContext.Provider>
+  )
 }
 
 export default DataProvider;

@@ -4,17 +4,15 @@ import PreviewListItem from "./PreviewListItem"
 
 const PreviewList = () => {
 
-  const { firebaseData, userChoice, partyPreviewObj, setPartyPreviewObj } = useContext(DataContext)
+  const { firebaseData, userChoice, partyPreview, setPartyPreview } = useContext(DataContext)
 
   useEffect(() => {
     for (let key in firebaseData) {
       if (key === userChoice) {
-        setPartyPreviewObj(firebaseData[key as keyof FirebaseDataType]);
+        setPartyPreview(Object.values(firebaseData[key as keyof FirebaseDataType]));
       }
     }
   }, [userChoice, firebaseData])
-
-  const parties = Object.values(partyPreviewObj)
 
   return (
     <div className="guestList">
@@ -22,12 +20,10 @@ const PreviewList = () => {
         <h2>Step 3: Review Your Party</h2>
         <ul className="partySummary">
           <PreviewListItem 
-            className="guestNames"
             heading="Name"
             property="guestName"
           />
           <PreviewListItem 
-            className="guestRestrictions"
             heading="Dietary Restrictions"
             property="restrictions"
           />
