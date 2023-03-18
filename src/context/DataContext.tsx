@@ -8,7 +8,7 @@ export type BaseDataType = {
   restrictions?: string[]
 }
 
-type PartyPreviewDataType = BaseDataType[]
+export type PartyPreviewDataType = BaseDataType[]
 
 export type FirebaseDataType = {
   [key: string]: {
@@ -25,12 +25,14 @@ interface DataContextInterface {
   restrictions: string[],
   userChoice: string,
   partyPreview: PartyPreviewDataType,
+  recipeData: any,
   setFirebaseData: Dispatch<React.SetStateAction<FirebaseDataType>>,
   setPartyName: Dispatch<React.SetStateAction<string>>,
   setGuestName: Dispatch<React.SetStateAction<string>>,
   setRestrictions: Dispatch<React.SetStateAction<string[]>>,
   setUserChoice: Dispatch<React.SetStateAction<string>>,
-  setPartyPreview: Dispatch<React.SetStateAction<PartyPreviewDataType>>
+  setPartyPreview: Dispatch<React.SetStateAction<PartyPreviewDataType>>,
+  setRecipeData: Dispatch<React.SetStateAction<any>>
 }
 
 const initFbState = {
@@ -58,12 +60,14 @@ const initContextState = {
   restrictions: [],
   userChoice: '',
   partyPreview: initPartyPreviewState,
+  recipeData: [],
   setFirebaseData: (value: FirebaseDataType) => { },
   setPartyName: (name: string) => { },
   setGuestName: (guest: string) => { },
   setRestrictions: (restrictions: string[]) => { },
   setUserChoice: (choice: string) => { },
-  setPartyPreview: (obj: PartyPreviewDataType) => { }
+  setPartyPreview: (obj: PartyPreviewDataType) => { },
+  setRecipeData: (recipes: any) => { }
 } as DataContextInterface
 
 
@@ -76,6 +80,7 @@ const DataProvider = ({ children }: ChildrenType) => {
   const [restrictions, setRestrictions] = useState<string[]>([]);
   const [userChoice, setUserChoice] = useState('');
   const [partyPreview, setPartyPreview] = useState(initPartyPreviewState)
+  const [recipeData, setRecipeData] = useState([])
 
   useEffect(() => {
     const database = getDatabase(firebase)
@@ -94,12 +99,14 @@ const DataProvider = ({ children }: ChildrenType) => {
         restrictions,
         userChoice,
         partyPreview,
+        recipeData,
         setFirebaseData,
         setPartyName,
         setGuestName,
         setRestrictions,
         setUserChoice,
-        setPartyPreview
+        setPartyPreview,
+        setRecipeData
       }}
     >
       {children}
