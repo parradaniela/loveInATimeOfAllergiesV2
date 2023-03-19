@@ -3,7 +3,7 @@ import BgWaveOne from "../../../assets/BgWaveOne";
 import { DataContext } from "../../../context/DataContext";
 import { apiEndpoint, constructApiParams } from "../../../services/recipeService";
 import Dropdown from "./Dropdown";
-import PreviewList from "./preview/PreviewList";
+import PreviewList from "./selectForm/PreviewList";
 
 const SelectForm = () => {
     const { partyPreview, setRecipeData } = useContext(DataContext)

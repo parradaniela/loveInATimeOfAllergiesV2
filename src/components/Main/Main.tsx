@@ -1,4 +1,4 @@
-import InputForm from "./form/InputForm";
+import InputForm from "./inputForm/InputForm";
 import SelectForm from "./dropdown/SelectForm";
 import DataProvider from "../../context/DataContext";
 import RecipeDisplay from "./recipeDisplay/RecipeDisplay";
