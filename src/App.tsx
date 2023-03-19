@@ -1,8 +1,8 @@
 import './css/setup.css';
 import './css/variables.css';
-import './css/typography.css';
 import './css/animations.css';
 import './css/general.css';
+import './css/typography.css';
 import './css/headerFooter.css';
 import './css/checkboxes.css';
 import './css/preview.css';

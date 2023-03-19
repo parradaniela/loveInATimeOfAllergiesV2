@@ -1,5 +1,5 @@
 import InputForm from "./inputForm/InputForm";
-import SelectForm from "./dropdown/SelectForm";
+import SelectForm from "./selectForm/SelectForm";
 import DataProvider from "../../context/DataContext";
 import RecipeDisplay from "./recipeDisplay/RecipeDisplay";
 

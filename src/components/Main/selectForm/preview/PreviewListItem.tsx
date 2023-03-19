@@ -1,5 +1,6 @@
 import { useContext } from "react"
-import { BaseDataType, DataContext } from "../../../../context/DataContext"
+import { DataContext } from "../../../../context/DataContext"
+import { BaseDataType } from "../../../../types/dataTypes"
 import PreviewListText from "./PreviewListText"
 
 type PropsType = {

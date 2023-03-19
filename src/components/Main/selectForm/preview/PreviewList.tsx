@@ -1,5 +1,6 @@
 import { useContext, useEffect } from "react"
-import { DataContext, FirebaseDataType } from "../../../../context/DataContext"
+import { DataContext } from "../../../../context/DataContext"
+import { FirebaseDataType } from "../../../../types/dataTypes"
 import PreviewListItem from "./PreviewListItem"
 
 const PreviewList = () => {
