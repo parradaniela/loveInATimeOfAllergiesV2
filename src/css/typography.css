@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Judson:wght@700&family=Lato&display=swap%27");
+/* Typography */
+h1 {
+  font-family: "Judson", serif;
+  letter-spacing: 1px;
+  font-size: 3.5rem;
+  line-height: 1;
+  margin-bottom: 20px;
+  background: rgb(135, 26, 62);
+  background: linear-gradient(
+    90deg,
+    rgba(135, 26, 62, 1) 0%,
+    rgba(38, 7, 85, 1) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  text-transform: uppercase;
+}
+
+h2,
+h3 {
+  font-family: "Judson", serif;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 2rem;
+  color: var(--color-tertiary);
+  padding: 20px;
+  line-height: 1;
+}
+
+h3 {
+  font-size: 1.4rem;
+  color: var(--color-secondary);
+  letter-spacing: 3px;
+  padding-top: 10px;
+}
+
+a {
+  font-family: "Lato", sans-serif;
+  text-decoration: none;
+  color: var(--color-primary);
+  transition: 0.3s;
+}
+
+a:hover,
+a:focus {
+  color: var(--color-white);
+}
+
+p,
+legend,
+label,
+button {
+  font-family: "Lato", sans-serif;
+  color: var(--color-tertiary);
+  font-size: 1rem;
+}
+
+legend {
+  margin-bottom: 20px;
+  text-align: center;
+  width: 100%;
+}
