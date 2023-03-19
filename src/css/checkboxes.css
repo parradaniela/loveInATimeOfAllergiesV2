@@ -1,0 +1,60 @@
+/* Party Form */
+.partyForm {
+  margin: 10px 0;
+}
+
+.partyForm input {
+  text-transform: capitalize;
+}
+
+/* Checkboxes */
+
+/* Relative container for Wave SVG */
+.checkBoxContainer {
+  position: relative;
+  padding-bottom: 110px;
+}
+
+.guestForm .guestNameBox {
+  margin: 10px 0;
+}
+
+.guestForm .guestNameBox input {
+  text-transform: capitalize;
+}
+
+.guestForm .checkboxes {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: left;
+  justify-content: space-between;
+}
+
+.guestForm .checkboxes label {
+  width: 200px;
+  cursor: pointer;
+}
+
+.guestForm .checkboxes input {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.checkboxes {
+  background-color: var(--color-white);
+  padding: 30px;
+  border-radius: 20px;
+  margin-top: 50px;
+}
+
+.buttonContainer {
+  margin: 50px;
+}
+
+#partyChoice {
+  border: none;
+  padding: 5px 10px;
+  background-color: var(--color-white);
+}
