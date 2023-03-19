@@ -1,17 +1,17 @@
 import { FormEvent, useContext } from "react";
 import { DataContext } from "../../../context/DataContext";
-import { apiEndpoint, constructApiParams } from "../recipeDisplay/apiCall";
+import { apiEndpoint, constructApiParams } from "./apiCall";
 import Dropdown from "./Dropdown";
 import PreviewList from "./preview/PreviewList";
 
 const SelectForm = () => {
-    const {partyPreview, setRecipeData} = useContext(DataContext)
+    const { partyPreview, setRecipeData } = useContext(DataContext)
 
     const callApi = async (restrictionParams: string) => {
         const apiData = await fetch(`${apiEndpoint}${restrictionParams}`)
         const recipes = await apiData.json()
         setRecipeData(recipes.hits)
-      }
+    }
 
     const onSubmit = (e: FormEvent) => {
         e.preventDefault();
