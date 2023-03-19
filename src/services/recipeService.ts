@@ -1,4 +1,4 @@
-import { PartyPreviewDataType } from "../../../context/DataContext";
+import { PartyPreviewDataType } from "../context/DataContext";
   
   const edamamAppID = "app_id=d42468c4";
   const edamamApiKey = "app_key=2a81448b298b7c6715d72883fbd595cd"
@@ -34,5 +34,6 @@ import { PartyPreviewDataType } from "../../../context/DataContext";
   //   const apiData = await fetch(`${apiEndpoint}${restrictionParams}`)
   //   const recipes = await apiData.json()
   //   return recipes.hits
+    //go back to defining here but just do the setter in SelectForm
   // }
 
