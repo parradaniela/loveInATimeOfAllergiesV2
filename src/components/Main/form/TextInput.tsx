@@ -11,7 +11,7 @@ type PropsType = {
 const TextInput = ({id, label, inputState, setInputState, placeholder}: PropsType) => {
 
   return (
-    <>
+    <div className="inputContainer">
       <label htmlFor={id}>{label}</label>
       <input
           type="text"
@@ -21,7 +21,7 @@ const TextInput = ({id, label, inputState, setInputState, placeholder}: PropsTyp
           placeholder={placeholder}
           required
       />
-    </>
+    </div>
   )
 }
 

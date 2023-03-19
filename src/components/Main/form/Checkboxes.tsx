@@ -22,13 +22,13 @@ const Checkboxes = () => {
             {
                 checkboxes.map((checkbox, i) => {
                     return (
-                        <div key={i}>
-                            <label htmlFor={checkbox}>{checkbox}</label>
+                        <div key={i} className="checkboxContainer">
                             <input
                                 type="checkbox"
                                 id={checkbox.toLowerCase()}
                                 onChange={onChange}
                             />
+                            <label htmlFor={checkbox.toLowerCase()}>{checkbox}</label>
                         </div>
                     )
                 })

@@ -18,7 +18,7 @@ const PreviewList = () => {
     <div className="guestList">
       {
         userChoice
-          ? <div className="summaryContainer cssanimation">
+          ? <div className="summaryContainer cssanimation sectionPadding">
             <h2>Step 3: Review Your Party</h2>
             <ul className="partySummary">
               <PreviewListItem

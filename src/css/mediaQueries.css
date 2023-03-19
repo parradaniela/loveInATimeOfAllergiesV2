@@ -11,7 +11,7 @@
 
 @media (max-width: 750px) {
   .textContainer {
-    padding-bottom: 20px;
+    padding-bottom: var(--spacing-md);
   }
 
   .partySummary {
@@ -21,12 +21,12 @@
   .guestName {
     width: 100%;
     text-align: center;
-    padding: 0 10px;
+    padding: 0 var(--spacing-sm);
   }
 
   .guestRestrictions {
     text-align: center;
-    padding: 0 10px;
+    padding: 0 var(--spacing-sm);
   }
 }
 
@@ -42,7 +42,7 @@
 
   footer p {
     font-size: 0.8rem;
-    padding: 0 10px;
+    padding: 0 var(--spacing-sm);
   }
 
   .iconTextDiv {
@@ -50,7 +50,7 @@
   }
 
   .faIcon {
-    padding-top: 10px;
+    padding-top: var(--spacing-sm);
   }
   .utensils {
     order: 1;

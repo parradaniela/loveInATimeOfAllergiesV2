@@ -7,12 +7,12 @@ const RecipeDisplay = () => {
     const { recipeData } = useContext(DataContext)
 
     return (
-        <section className="Recipe">
+        <section className="sectionPadding relContainer">
             <div className="wrapper">
                 <ul className="recipeList">
                     {
                         recipeData === initRecipeDataState 
-                        ? <p>Please select a party</p>
+                        ? null
                         : recipeData.map(recipeObj => {
                             return (
                                 <li 
