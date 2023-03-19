@@ -2,6 +2,8 @@ import { getDatabase, onValue, ref } from "firebase/database";
 import { createContext, useState, Dispatch, ReactNode, useEffect } from "react";
 import firebase from "../firebase/firebase";
 
+//TODO: Break this up into apiContext and firebaseContext 
+
 export type BaseDataType = {
   guestName: string,
   party: string,
@@ -16,6 +18,15 @@ export type FirebaseDataType = {
   }
 }
 
+type RecipeDataType = {
+  recipe: {
+    [key: string]: any
+  },
+  _links: {
+    [key: string]: string
+  }
+}
+
 type ChildrenType = { children?: ReactNode }
 
 interface DataContextInterface {
@@ -25,14 +36,14 @@ interface DataContextInterface {
   restrictions: string[],
   userChoice: string,
   partyPreview: PartyPreviewDataType,
-  recipeData: any,
+  recipeData: RecipeDataType[],
   setFirebaseData: Dispatch<React.SetStateAction<FirebaseDataType>>,
   setPartyName: Dispatch<React.SetStateAction<string>>,
   setGuestName: Dispatch<React.SetStateAction<string>>,
   setRestrictions: Dispatch<React.SetStateAction<string[]>>,
   setUserChoice: Dispatch<React.SetStateAction<string>>,
   setPartyPreview: Dispatch<React.SetStateAction<PartyPreviewDataType>>,
-  setRecipeData: Dispatch<React.SetStateAction<any>>
+  setRecipeData: Dispatch<React.SetStateAction<RecipeDataType[]>>
 }
 
 const initFbState = {
@@ -53,6 +64,18 @@ const initPartyPreviewState = [
   }
 ] as PartyPreviewDataType
 
+
+export const initRecipeDataState = [
+  {
+    recipe: {
+      '': ''
+    },
+    _links: {
+      '': ''
+    }
+  }
+] as RecipeDataType[]
+
 const initContextState = {
   firebaseData: initFbState,
   partyName: '',
@@ -60,14 +83,14 @@ const initContextState = {
   restrictions: [],
   userChoice: '',
   partyPreview: initPartyPreviewState,
-  recipeData: [],
+  recipeData: initRecipeDataState,
   setFirebaseData: (value: FirebaseDataType) => { },
   setPartyName: (name: string) => { },
   setGuestName: (guest: string) => { },
   setRestrictions: (restrictions: string[]) => { },
   setUserChoice: (choice: string) => { },
   setPartyPreview: (obj: PartyPreviewDataType) => { },
-  setRecipeData: (recipes: any) => { }
+  setRecipeData: (recipes: RecipeDataType[]) => { }
 } as DataContextInterface
 
 
@@ -80,7 +103,7 @@ const DataProvider = ({ children }: ChildrenType) => {
   const [restrictions, setRestrictions] = useState<string[]>([]);
   const [userChoice, setUserChoice] = useState('');
   const [partyPreview, setPartyPreview] = useState(initPartyPreviewState)
-  const [recipeData, setRecipeData] = useState([])
+  const [recipeData, setRecipeData] = useState(initRecipeDataState)
 
   useEffect(() => {
     const database = getDatabase(firebase)
