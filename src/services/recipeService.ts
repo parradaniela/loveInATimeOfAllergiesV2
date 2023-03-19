@@ -1,4 +1,4 @@
-import { PartyPreviewDataType } from "../context/DataContext";
+import { PartyPreviewDataType } from "../types/dataTypes";
   
   const edamamAppID = "app_id=d42468c4";
   const edamamApiKey = "app_key=2a81448b298b7c6715d72883fbd595cd"

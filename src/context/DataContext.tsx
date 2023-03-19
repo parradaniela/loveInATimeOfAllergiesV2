@@ -1,36 +1,12 @@
 import { getDatabase, onValue, ref } from "firebase/database";
 import { createContext, useState, Dispatch, ReactNode, useEffect } from "react";
+import { PartyPreviewDataType, FirebaseDataType, RecipeDataType } from "../types/dataTypes";
 import firebase from "../services/firebase";
+import { initContextState, initFbState, initPartyPreviewState, initRecipeDataState } from "./initialStates";
 
-//TODO: Break this up into apiContext and firebaseContext 
-//TODO: Move types to their own files
+type ChildrenType = { children: ReactNode }
 
-export type BaseDataType = {
-  guestName: string,
-  party: string,
-  restrictions?: string[]
-}
-
-export type PartyPreviewDataType = BaseDataType[]
-
-export type FirebaseDataType = {
-  [key: string]: {
-    [key: string]: BaseDataType
-  }
-}
-
-type RecipeDataType = {
-  recipe: {
-    [key: string]: any
-  },
-  _links: {
-    [key: string]: string
-  }
-}
-
-type ChildrenType = { children?: ReactNode }
-
-interface DataContextInterface {
+export interface DataContextInterface {
   firebaseData: FirebaseDataType,
   partyName: string,
   guestName: string,
@@ -47,58 +23,10 @@ interface DataContextInterface {
   setRecipeData: Dispatch<React.SetStateAction<RecipeDataType[]>>
 }
 
-const initFbState = {
-  '': {
-    '': {
-      guestName: '',
-      party: '',
-      restrictions: []
-    }
-  }
-} as FirebaseDataType
-
-const initPartyPreviewState = [
-  {
-    guestName: '',
-    party: '',
-    restrictions: []
-  }
-] as PartyPreviewDataType
-
-
-export const initRecipeDataState = [
-  {
-    recipe: {
-      '': ''
-    },
-    _links: {
-      '': ''
-    }
-  }
-] as RecipeDataType[]
-
-const initContextState = {
-  firebaseData: initFbState,
-  partyName: '',
-  guestName: '',
-  restrictions: [],
-  userChoice: '',
-  partyPreview: initPartyPreviewState,
-  recipeData: initRecipeDataState,
-  setFirebaseData: (value: FirebaseDataType) => { },
-  setPartyName: (name: string) => { },
-  setGuestName: (guest: string) => { },
-  setRestrictions: (restrictions: string[]) => { },
-  setUserChoice: (choice: string) => { },
-  setPartyPreview: (obj: PartyPreviewDataType) => { },
-  setRecipeData: (recipes: RecipeDataType[]) => { }
-} as DataContextInterface
-
-
 export const DataContext = createContext<DataContextInterface>(initContextState);
 
 const DataProvider = ({ children }: ChildrenType) => {
-  const [firebaseData, setFirebaseData] = useState<FirebaseDataType>(initFbState)
+  const [firebaseData, setFirebaseData] = useState(initFbState)
   const [partyName, setPartyName] = useState('');
   const [guestName, setGuestName] = useState('');
   const [restrictions, setRestrictions] = useState<string[]>([]);
@@ -106,6 +34,7 @@ const DataProvider = ({ children }: ChildrenType) => {
   const [partyPreview, setPartyPreview] = useState(initPartyPreviewState)
   const [recipeData, setRecipeData] = useState(initRecipeDataState)
 
+  //Pulls FB data when the DataProvider mounts, and updates when values change
   useEffect(() => {
     const database = getDatabase(firebase)
     const dbRef = ref(database)
