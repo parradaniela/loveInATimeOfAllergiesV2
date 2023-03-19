@@ -4,7 +4,7 @@ import PreviewListItem from "./PreviewListItem"
 
 const PreviewList = () => {
 
-  const { firebaseData, userChoice, partyPreview, setPartyPreview } = useContext(DataContext)
+  const { firebaseData, userChoice, setPartyPreview } = useContext(DataContext)
 
   useEffect(() => {
     for (let key in firebaseData) {
@@ -16,19 +16,23 @@ const PreviewList = () => {
 
   return (
     <div className="guestList">
-      <div className="summaryContainer cssanimation">
-        <h2>Step 3: Review Your Party</h2>
-        <ul className="partySummary">
-          <PreviewListItem 
-            heading="Name"
-            property="guestName"
-          />
-          <PreviewListItem 
-            heading="Dietary Restrictions"
-            property="restrictions"
-          />
-        </ul>
-      </div>
+      {
+        userChoice
+          ? <div className="summaryContainer cssanimation">
+            <h2>Step 3: Review Your Party</h2>
+            <ul className="partySummary">
+              <PreviewListItem
+                heading="Name"
+                property="guestName"
+              />
+              <PreviewListItem
+                heading="Dietary Restrictions"
+                property="restrictions"
+              />
+            </ul>
+          </div>
+          : null
+      }
     </div>
   )
 }
