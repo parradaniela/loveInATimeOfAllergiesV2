@@ -1,8 +1,9 @@
 import { getDatabase, onValue, ref } from "firebase/database";
 import { createContext, useState, Dispatch, ReactNode, useEffect } from "react";
-import firebase from "../firebase/firebase";
+import firebase from "../services/firebase";
 
 //TODO: Break this up into apiContext and firebaseContext 
+//TODO: Move types to their own files
 
 export type BaseDataType = {
   guestName: string,
