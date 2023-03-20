@@ -4,7 +4,7 @@ const Header = () => {
 
     return (
         <header>
-            <div className="headerContainer relContainer">
+            <div className="headerContainer relContainer sectionPadding">
                 <div className="textContainer wrapper">
                     <h1>Love in a Time of Allergies</h1>
                     <p>
