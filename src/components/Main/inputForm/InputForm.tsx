@@ -49,7 +49,7 @@ const InputForm = () => {
   }
 
   return (
-    <section className="sectionPadding relContainer">
+    <section className="sectionPadding relContainer inputForm">
       <div className="wrapper">
         <form
           action="submit"
