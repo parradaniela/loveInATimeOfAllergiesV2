@@ -24,14 +24,15 @@ const InputForm = () => {
   const clearCheckboxes = (e: FormEvent<HTMLFormElement>): void => {
     //TODO: Come up with a better solution than this :( 
       
-    // const target = e.target as Element;
-    // const checkboxNodeList = target.childNodes[1].childNodes[5].childNodes;
-    // checkboxNodeList.forEach(checkboxNode => {
-    //   const checkboxInputs = checkboxNode.childNodes[1] as HTMLInputElement;
-    //   if (checkboxInputs.checked) {
-    //     checkboxInputs.checked = false
-    //   }
-    // });
+    const target = e.target as Element;
+    const checkboxNodeList = target.childNodes[1].childNodes[3].childNodes;
+    // Iterating through the checkboxes to find checked boxes and flip them back to false
+    checkboxNodeList.forEach(checkboxNode => {
+      const checkboxInputs = checkboxNode.childNodes[0] as HTMLInputElement;
+      if (checkboxInputs.checked) {
+        checkboxInputs.checked = false
+      }
+    });
   }
 
   const onSubmit = (e: FormEvent<HTMLFormElement>): void => {
@@ -44,7 +45,7 @@ const InputForm = () => {
       restrictions: restrictions
     }
     push(childNodeRef, newGuest);
-    // clearCheckboxes(e);
+    clearCheckboxes(e);
     resetForm()
   }
 
