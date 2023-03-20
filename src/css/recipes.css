@@ -9,7 +9,7 @@
   flex-wrap: wrap;
   list-style: none;
   justify-content: space-evenly;
-  gap: 10px;
+  gap: var(--spacing-sm);
   padding: 0;
   transition: transform 0.1s;
 }
@@ -17,12 +17,12 @@
 .individualRecipe {
   width: 250px;
   padding-bottom: 50px;
-  padding: 20px;
+  padding: var(--spacing-md);
   background-color: var(--color-white);
   border-radius: 5%;
-  margin-bottom: 20px;
+  margin-bottom: var(--spacing-md);
   transition: transform 0.2s;
-  box-shadow: 0 0 10px #948c90;
+  box-shadow: 0 0 var(--spacing-sm) #948c90;
 }
 
 .individualRecipe:hover,

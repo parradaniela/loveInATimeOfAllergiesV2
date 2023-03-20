@@ -5,12 +5,12 @@ h1 {
   letter-spacing: 1px;
   font-size: 3.5rem;
   line-height: 1;
-  margin-bottom: 20px;
-  background: rgb(135, 26, 62);
+  margin-bottom: var(--spacing-md);
+  background: var(--color-secondary);
   background: linear-gradient(
     90deg,
-    rgba(135, 26, 62, 1) 0%,
-    rgba(38, 7, 85, 1) 100%
+    var(--color-secondary) 0%,
+    var(--color-tertiary) 100%
   );
   background-clip: text;
   -webkit-background-clip: text;
@@ -27,7 +27,7 @@ h3 {
 h2 {
   font-size: 2rem;
   color: var(--color-tertiary);
-  padding: 20px;
+  padding: var(--spacing-md);
   line-height: 1;
 }
 
@@ -35,12 +35,11 @@ h3 {
   font-size: 1.4rem;
   color: var(--color-secondary);
   letter-spacing: 3px;
-  padding-top: 10px;
+  padding-top: var(--spacing-sm);
 }
 
 a {
   font-family: "Lato", sans-serif;
-  text-decoration: none;
   color: var(--color-primary);
   transition: 0.3s;
 }
@@ -60,7 +59,7 @@ button {
 }
 
 legend {
-  margin-bottom: 20px;
+  margin-bottom: var(--spacing-md);
   text-align: center;
   width: 100%;
 }

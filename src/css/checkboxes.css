@@ -1,6 +1,6 @@
 /* Party Form */
 .partyForm {
-  margin: 10px 0;
+  margin: var(--spacing-sm) 0;
 }
 
 .partyForm input {
@@ -9,52 +9,25 @@
 
 /* Checkboxes */
 
-/* Relative container for Wave SVG */
-.checkBoxContainer {
-  position: relative;
-  padding-bottom: 110px;
-}
-
-.guestForm .guestNameBox {
-  margin: 10px 0;
-}
-
-.guestForm .guestNameBox input {
-  text-transform: capitalize;
-}
-
-.guestForm .checkboxes {
-  display: flex;
-  flex-wrap: wrap;
-  text-align: left;
-  justify-content: space-between;
-}
-
-.guestForm .checkboxes label {
-  width: 200px;
-  cursor: pointer;
-}
-
-.guestForm .checkboxes input {
-  width: 20px;
-  height: 20px;
-  cursor: pointer;
-  margin-right: 5px;
+input[type="checkbox"] {
+  margin: 10px;
 }
 
 .checkboxes {
   background-color: var(--color-white);
-  padding: 30px;
-  border-radius: 20px;
-  margin-top: 50px;
+  margin-top: 30px;
+  padding: 15px;
+  border-radius: var(--spacing-md);
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--spacing-sm);
+  text-align: left;
 }
 
-.buttonContainer {
-  margin: 50px;
+.checkboxContainer {
+  flex-basis: 18%;
 }
 
-#partyChoice {
-  border: none;
-  padding: 5px 10px;
-  background-color: var(--color-white);
+.checkboxContainer :is(input, label) {
+  cursor: pointer;
 }

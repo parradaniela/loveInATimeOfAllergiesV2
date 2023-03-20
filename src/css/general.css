@@ -10,7 +10,7 @@ html {
 }
 
 .wrapper {
-  max-width: 1260px;
+  max-width: 1440px;
   width: 90%;
   margin: 0 auto;
 }
@@ -22,6 +22,7 @@ h2,
 h3,
 p,
 ul,
+ol,
 li,
 button {
   margin: 0;
@@ -35,14 +36,14 @@ li {
 }
 
 label {
-  margin-right: 10px;
+  margin-right: var(--spacing-sm);
 }
 
-input {
+input[type="text"] {
   border: none;
   padding: 5px 15px;
-  border-radius: 20px;
-  margin-top: 10px;
+  border-radius: var(--spacing-md);
+  margin-top: var(--spacing-sm);
 }
 
 fieldset,
@@ -50,9 +51,8 @@ button {
   border: none;
 }
 
-.faIcon {
-  font-size: 2rem;
-  color: var(--color-secondary);
+.btnContainer {
+  margin-top: 30px;
 }
 
 .btn {
@@ -64,6 +64,7 @@ button {
   transition: all 0.3s;
   cursor: pointer;
   width: 222px;
+  z-index: 10;
 }
 
 .btn:hover,
@@ -71,9 +72,21 @@ button {
   background-color: var(--color-tertiary);
 }
 
+.sectionPadding {
+  padding: 5% 0;
+}
+
+.relContainer {
+  position: relative;
+}
+
+.block {
+  display: block;
+}
+
 /* Huge thanks to the Shape Divider App at https://www.shapedivider.app/ for the easy wave shaped SVG */
 
-/* Wave SVG used in Header and Party Preview sections */
+/* Wave SVGs*/
 .wave {
   position: absolute;
   bottom: 0;
@@ -93,12 +106,13 @@ button {
   height: 147px;
 }
 
-/* Wave SVG used in Forms section*/
-.waveForms {
+/* BgWaveTwo */
+.waveTwo {
   fill: var(--color-tertiary);
+  z-index: -1;
 }
 
-.waveForms svg {
+.waveTwo svg {
   position: block;
   display: block;
   width: calc(100% + 1.3px);

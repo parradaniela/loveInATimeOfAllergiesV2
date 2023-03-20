@@ -1,5 +1,6 @@
 import { useContext, useEffect } from "react"
-import { DataContext, FirebaseDataType } from "../../../../context/DataContext"
+import { DataContext } from "../../../../context/DataContext"
+import { FirebaseDataType } from "../../../../types/dataTypes"
 import PreviewListItem from "./PreviewListItem"
 
 const PreviewList = () => {
@@ -18,7 +19,7 @@ const PreviewList = () => {
     <div className="guestList">
       {
         userChoice
-          ? <div className="summaryContainer cssanimation">
+          ? <div className="summaryContainer cssanimation sectionPadding">
             <h2>Step 3: Review Your Party</h2>
             <ul className="partySummary">
               <PreviewListItem

@@ -1,6 +1,7 @@
 import { FormEvent, useContext } from "react";
+import BgWaveOne from "../../../assets/BgWaveOne";
 import { DataContext } from "../../../context/DataContext";
-import { apiEndpoint, constructApiParams } from "./apiCall";
+import { apiEndpoint, constructApiParams } from "../../../services/recipeService";
 import Dropdown from "./Dropdown";
 import PreviewList from "./preview/PreviewList";
 
@@ -11,6 +12,7 @@ const SelectForm = () => {
         const apiData = await fetch(`${apiEndpoint}${restrictionParams}`)
         const recipes = await apiData.json()
         setRecipeData(recipes.hits)
+        //TODO: Missing proper error handling
     }
 
     const onSubmit = (e: FormEvent) => {
@@ -18,12 +20,10 @@ const SelectForm = () => {
         const copyOfPartyPreview = [...partyPreview]
         const apiSearchParams = constructApiParams(copyOfPartyPreview)
         callApi(apiSearchParams)
-        // const results = callApi(apiSearchParams)
-        // setRecipeData(results)
     }
 
     return (
-        <section className="partyPreview">
+        <section className="partyPreview relContainer sectionPadding">
             <div className="dropdown wrapper">
                 <h2>Step 2: Select Your Party</h2>
                 <form action="submit" className="dropdownForm" onSubmit={onSubmit}>
@@ -35,6 +35,7 @@ const SelectForm = () => {
                     </fieldset>
                 </form>
             </div>
+            <BgWaveOne />
         </section>
     )
 }

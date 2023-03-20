@@ -1,18 +1,19 @@
 import { useContext } from "react"
 import { DataContext } from "../../../context/DataContext"
+import { initRecipeDataState } from "../../../context/initialStates"
 import RecipeItem from "./RecipeItem"
-import { initRecipeDataState } from "../../../context/DataContext"
+
 
 const RecipeDisplay = () => {
     const { recipeData } = useContext(DataContext)
 
     return (
-        <section className="Recipe">
+        <section className="sectionPadding relContainer">
             <div className="wrapper">
                 <ul className="recipeList">
                     {
                         recipeData === initRecipeDataState 
-                        ? <p>Please select a party</p>
+                        ? null
                         : recipeData.map(recipeObj => {
                             return (
                                 <li 

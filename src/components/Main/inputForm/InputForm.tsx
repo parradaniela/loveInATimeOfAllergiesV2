@@ -2,8 +2,9 @@ import { FormEvent, useContext } from "react";
 import TextInput from "./TextInput";
 import Checkboxes from "./Checkboxes";
 import { getDatabase, push, ref } from "firebase/database";
-import firebase from "../../../firebase/firebase";
+import firebase from "../../../services/firebase";
 import { DataContext } from "../../../context/DataContext";
+import BgWaveTwo from "../../../assets/BgWaveTwo";
 
 const InputForm = () => {
   const {
@@ -21,15 +22,16 @@ const InputForm = () => {
   }
 
   const clearCheckboxes = (e: FormEvent<HTMLFormElement>): void => {
-    const target = e.target as Element;
-    //Navigating through properties on the node list to find the checked property on each checkbox and flip it back to false
-    const checkboxNodeList = target.childNodes[1].childNodes[5].childNodes;
-    checkboxNodeList.forEach(checkboxNode => {
-      const checkboxInputs = checkboxNode.childNodes[1] as HTMLInputElement;
-      if (checkboxInputs.checked) {
-        checkboxInputs.checked = false
-      }
-    });
+    //TODO: Come up with a better solution than this :( 
+      
+    // const target = e.target as Element;
+    // const checkboxNodeList = target.childNodes[1].childNodes[5].childNodes;
+    // checkboxNodeList.forEach(checkboxNode => {
+    //   const checkboxInputs = checkboxNode.childNodes[1] as HTMLInputElement;
+    //   if (checkboxInputs.checked) {
+    //     checkboxInputs.checked = false
+    //   }
+    // });
   }
 
   const onSubmit = (e: FormEvent<HTMLFormElement>): void => {
@@ -42,12 +44,12 @@ const InputForm = () => {
       restrictions: restrictions
     }
     push(childNodeRef, newGuest);
-    clearCheckboxes(e);
+    // clearCheckboxes(e);
     resetForm()
   }
 
   return (
-    <section className="forms">
+    <section className="sectionPadding relContainer inputForm">
       <div className="wrapper">
         <form
           action="submit"
@@ -77,12 +79,13 @@ const InputForm = () => {
             <div className="checkboxes">
               <Checkboxes />
             </div>
-            <div className="buttonContainer">
+            <div className="btnContainer">
               <button className="btn">Submit</button>
             </div>
           </fieldset>
         </form>
       </div>
+      <BgWaveTwo />
     </section>
   )
 }
