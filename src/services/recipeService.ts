@@ -16,24 +16,13 @@ import { PartyPreviewDataType } from "../types/dataTypes";
     const filteredData = checkForRestrictions(partyPreviewData)
     if (filteredData.length > 0) {
       const mergedRestrictions = filteredData.map(guestObj => {
-        // console.log(mergedRestrictions);
           return guestObj.restrictions
       });
       const concatenated = Array.prototype.concat.apply([], mergedRestrictions)
-      // console.log(concatenated);
       const unique = [...new Set(concatenated)]
-      // console.log(unique);
       const finalUrlParams = unique.join("&health=")
-      // console.log(finalUrlParams);
       return `&health=${finalUrlParams}`
     }
     return ''
   }
-
-  // export const callApi = async <T>(restrictionParams: string) => {
-  //   const apiData = await fetch(`${apiEndpoint}${restrictionParams}`)
-  //   const recipes = await apiData.json()
-  //   return recipes.hits
-    //go back to defining here but just do the setter in SelectForm
-  // }
 
