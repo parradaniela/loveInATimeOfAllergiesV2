@@ -24,6 +24,10 @@ input[type="checkbox"] {
   text-align: left;
 }
 
+.checkboxContainer {
+  flex-basis: 18%;
+}
+
 .checkboxContainer :is(input, label) {
   cursor: pointer;
 }

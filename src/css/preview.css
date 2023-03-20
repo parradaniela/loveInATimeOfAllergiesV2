@@ -48,6 +48,7 @@
   justify-content: center;
   width: 85%;
   background-color: var(--color-white);
+  padding: var(--spacing-sm);
   text-align: center;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
