@@ -12,7 +12,7 @@ const SelectForm = () => {
         const apiData = await fetch(`${apiEndpoint}${restrictionParams}`)
         const recipes = await apiData.json()
         setRecipeData(recipes.hits)
-        //TODO: add error handling
+        //TODO: Missing proper error handling
     }
 
     const onSubmit = (e: FormEvent) => {
@@ -20,8 +20,6 @@ const SelectForm = () => {
         const copyOfPartyPreview = [...partyPreview]
         const apiSearchParams = constructApiParams(copyOfPartyPreview)
         callApi(apiSearchParams)
-        // const results = callApi(apiSearchParams)
-        // setRecipeData(results)
     }
 
     return (
