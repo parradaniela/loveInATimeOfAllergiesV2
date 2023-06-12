@@ -29,11 +29,13 @@ export const initContextState = {
     userChoice: '',
     partyPreview: initPartyPreviewState,
     recipeData: initRecipeDataState,
+    loading: false,
     setFirebaseData: (value: FirebaseDataType) => { },
     setPartyName: (name: string) => { },
     setGuestName: (guest: string) => { },
     setRestrictions: (restrictions: string[]) => { },
     setUserChoice: (choice: string) => { },
     setPartyPreview: (obj: PartyPreviewDataType) => { },
-    setRecipeData: (recipes: RecipeDataType[]) => { }
+    setRecipeData: (recipes: RecipeDataType[]) => { },
+    setLoading: (loading: boolean) => { }
 } as DataContextInterface

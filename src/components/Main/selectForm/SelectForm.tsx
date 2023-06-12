@@ -6,13 +6,20 @@ import Dropdown from "./Dropdown";
 import PreviewList from "./preview/PreviewList";
 
 const SelectForm = () => {
-    const { partyPreview, setRecipeData } = useContext(DataContext)
+    const { partyPreview, setRecipeData, loading, setLoading } = useContext(DataContext)
 
     const callApi = async (restrictionParams: string) => {
-        const apiData = await fetch(`${apiEndpoint}${restrictionParams}`)
-        const recipes = await apiData.json()
-        setRecipeData(recipes.hits)
-        //TODO: Missing proper error handling
+        try {
+            setLoading(true)
+            const apiData = await fetch(`${apiEndpoint}${restrictionParams}`)
+            const recipes = await apiData.json()
+            setRecipeData(recipes.hits)
+            setLoading(false)
+        } catch (error) {
+            setLoading(false)
+            console.error(error)
+        }
+
     }
 
     const onSubmit = (e: FormEvent) => {
@@ -31,7 +38,7 @@ const SelectForm = () => {
                         <legend>Select the party for which you wish to see recipe suggestions!</legend>
                         <Dropdown />
                         <PreviewList />
-                        <button className="btn">Show me recipes</button>
+                        <button className="btn">{loading ? 'Fetching...' : 'Get recipes'}</button>
                     </fieldset>
                 </form>
             </div>
