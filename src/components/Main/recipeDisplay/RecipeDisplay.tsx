@@ -12,22 +12,22 @@ const RecipeDisplay = () => {
             <div className="wrapper">
                 <ul className="recipeList">
                     {
-                        recipeData === initRecipeDataState 
-                        ? null
-                        : recipeData.map(recipeObj => {
-                            return (
-                                <li 
-                                className="individualRecipe cssanimation fadeInBottom" 
-                                key={recipeObj.recipe.label}
-                                >
-                                    <RecipeItem 
-                                        url={recipeObj.recipe.url}
-                                        imgSrc={recipeObj.recipe.image}
-                                        label={recipeObj.recipe.label}
-                                    />
-                                </li>
-                            )
-                        })
+                        recipeData === initRecipeDataState
+                            ? null
+                            : recipeData.map(recipeObj => {
+                                return (
+                                    <li
+                                        className="individualRecipe cssanimation fadeInBottom"
+                                        key={recipeObj.recipe.label}
+                                    >
+                                        <RecipeItem
+                                            url={recipeObj.recipe.url}
+                                            imgSrc={recipeObj.recipe.image}
+                                            label={recipeObj.recipe.label}
+                                        />
+                                    </li>
+                                )
+                            })
                     }
                 </ul>
             </div>

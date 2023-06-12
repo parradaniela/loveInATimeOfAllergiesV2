@@ -14,13 +14,15 @@ export interface DataContextInterface {
   userChoice: string,
   partyPreview: PartyPreviewDataType,
   recipeData: RecipeDataType[],
+  loading: boolean,
   setFirebaseData: Dispatch<React.SetStateAction<FirebaseDataType>>,
   setPartyName: Dispatch<React.SetStateAction<string>>,
   setGuestName: Dispatch<React.SetStateAction<string>>,
   setRestrictions: Dispatch<React.SetStateAction<string[]>>,
   setUserChoice: Dispatch<React.SetStateAction<string>>,
   setPartyPreview: Dispatch<React.SetStateAction<PartyPreviewDataType>>,
-  setRecipeData: Dispatch<React.SetStateAction<RecipeDataType[]>>
+  setRecipeData: Dispatch<React.SetStateAction<RecipeDataType[]>>,
+  setLoading: Dispatch<React.SetStateAction<boolean>>
 }
 
 export const DataContext = createContext<DataContextInterface>(initContextState);
@@ -33,6 +35,7 @@ const DataProvider = ({ children }: ChildrenType) => {
   const [userChoice, setUserChoice] = useState('');
   const [partyPreview, setPartyPreview] = useState(initPartyPreviewState)
   const [recipeData, setRecipeData] = useState(initRecipeDataState)
+  const [loading, setLoading] = useState(false)
 
   //Pulls FB data when the DataProvider mounts, and updates when values change
   useEffect(() => {
@@ -53,13 +56,15 @@ const DataProvider = ({ children }: ChildrenType) => {
         userChoice,
         partyPreview,
         recipeData,
+        loading,
         setFirebaseData,
         setPartyName,
         setGuestName,
         setRestrictions,
         setUserChoice,
         setPartyPreview,
-        setRecipeData
+        setRecipeData,
+        setLoading
       }}
     >
       {children}
